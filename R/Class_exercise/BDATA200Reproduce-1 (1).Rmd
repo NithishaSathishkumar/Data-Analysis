@@ -1,0 +1,61 @@
+---
+title: "BDATA 200 Reproducibility Exercise"
+author: 'Kevin Garcia '
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: '3'
+    df_print: paged
+    number_sections: true
+    theme: united
+    code_folding: none
+  pdf_document:
+    toc: true
+    toc_depth: '3'
+  word_document:
+    toc: true
+    toc_depth: '3'
+---
+
+# Setup code
+
+
+## Load Required Packages
+```{r load-packages}
+library(ggplot2)
+library(dplyr)
+```
+
+## Load the Data
+```{r load-data}
+setwd("/Users/nithishasathishkumar/Desktop/Data_Analysis/R/Class_exercise")
+titanic <- read.csv("TitanicData.csv")
+```
+
+## Data Preprocessing
+we convert categorical variables (`survived` and `pclass`) into factors for better readability and visualization.
+
+```{r preprocess-data}
+titanic$survived <- factor(titanic$survived, labels = c("Did Not Survive", "Survived"))
+titanic$pclass <- factor(titanic$pclass, labels = c("1st Class", "2nd Class", "3rd Class"))
+```
+
+# Chart/Graph Code
+The following visualization shows the survival rate by passenger class.
+
+```{r plot-survival-rate}
+# Plot survival rate by passenger class
+ggplot(titanic, aes(x = pclass, fill = survived)) +
+  geom_bar(position = "fill") +
+  labs(title = "Titanic Survival Rate by Passenger Class", 
+       x = "Passenger Class", 
+       y = "Proportion", 
+       fill = "Survival Status") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal()
+```
+
+# Additional Notes on Reproducibility
+- make sure the dataset file (`TitanicData.csv`) is in the working directory before running the code
+

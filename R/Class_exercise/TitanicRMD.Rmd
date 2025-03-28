@@ -1,0 +1,38 @@
+---
+title: "Titanic Survival Analysis"
+author: "Nithisha"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+theme_set(theme_minimal())
+```
+
+## Introduction
+This report visualizes Titanic survival data using `ggplot2`.
+
+## Load Data
+```{r load-data}
+titanic_df <- read.csv("TitanicData.csv")
+```
+
+## Survival Rate by Class and Gender
+```{r plot-survival}
+ggplot(titanic_df, aes(x = factor(pclass), fill = factor(survived))) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~ sex) +
+  labs(
+    title = "Titanic Survival Rate by Class and Gender",
+    x = "Passenger Class",
+    y = "Count",
+    fill = "Survived"
+  ) +
+  theme_minimal()
+
+```
+
+## Conclusion
+The visualization indicates a higher survival rate for first-class passengers and females.

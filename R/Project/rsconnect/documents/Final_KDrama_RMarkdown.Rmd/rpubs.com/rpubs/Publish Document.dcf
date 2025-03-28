@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1282056/7f1b1110d64e43fb888f65c1755552bf
+bundleId: https://api.rpubs.com/api/v1/document/1282056/7f1b1110d64e43fb888f65c1755552bf
+url: http://rpubs.com/snithisha/1282056
+version: 1
